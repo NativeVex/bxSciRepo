@@ -1,0 +1,4 @@
+import java.util.Scanner();
+public abstract class Borrower{
+  Scanner bob = new Scanner(System.in);
+  System.out.println("Please enter if you are 
