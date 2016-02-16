@@ -2,4 +2,13 @@
 /feb3-22proj/.settings
 /feb3-22proj/.project
 /feb3-22proj/.classpath
+/.recommenders
 *.class
+*.fdt
+*.fdx
+*.fnm
+*.frq
+*.nrm
+*.prx
+*.tii
+*.tis
