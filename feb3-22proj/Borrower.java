@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -10,36 +7,46 @@ import java.util.ArrayList;
 
 public abstract class Borrower{
 	public Borrower(){
-
+		//TODO student id verification? 
 	}
-	/*
-	 * storage for all the lines in the text file. each line is a new string
+	
+	/**
+	 * The books the individual has in their possession
 	 */
-	public ArrayList<String> out = new ArrayList<String>();
-	/*
-	 * gets everything inside the text file and writes it to out
+	public ArrayList<String> books_has = new ArrayList<String>();
+	
+	/**
+	 * Adds book to out arraylist
+	 * @param book
 	 */
-	public void reader() {
-		try{
-			FileReader fileReader = new FileReader("Books.txt");
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			boolean b = true;
-			while(b){
-				String temp = bufferedReader.readLine(); //saves current iteration into temp var
-				if(temp.equals(null)){ //when reading empty line, temp var = null
-					b = false; //prevent more looping
-					break; //do not continue loop
-				}
-				out.add(temp); //if not null, or error, write to arraylist
+	public void catalogueEnter(Book book){ //who keeps making stuff abstract cause they lazy?!
+		Main.lib.add(book); //it's not even hard m8
+	}
+	
+	/**
+	 * Gets if book is available within Main.out
+	 * @param name
+	 * @return
+	 */
+	public boolean availabilityCheck(String name){ //seriously who made this abstract
+		for(int i = 0; i<Main.lib.size()-1;i++){
+			if(Main.lib.get(i).toString().indexOf(name)!=-1){
+				return true;
 			}
-			bufferedReader.close(); //close importstream to prevent mem leak
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		return false;
 	}
-	abstract void catalogueEnter();
-	abstract void availabilityCheck();
-	abstract void checkOut();
+	
+	/**
+	 * 
+	 * @param in
+	 */
+	public void checkOut(Book in){
+		
+		//in.setTime_of_checkout(new Date());
+		
+		//TODO
+		//check if limit is reached, & change status of book in out arraylist & add book to arraylist of stored
+		//remember to override in student and teacher class adjusting for restrictions correctly
+	}
 }

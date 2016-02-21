@@ -1,3 +1,4 @@
+import java.util.Date;
 
 /**
  * @author Artur
@@ -6,11 +7,29 @@
 public class Book {
 	private String book_name, author, category, status;
 	private long isbn;
+	private Date time_of_checkout;
 	public Book(long isbn, String book_name, String author, String category, String status){
-		
+		this.setTime_of_checkout(new Date());
 	}
+	/**
+	 * Returns the Books.txt format of the book
+	 */
 	public String toString(){
-		return ("ISBN ID ="+isbn+" Book Name ="+book_name+" Author ="+author+" Category ="+category+" Status ="+status);
+		return ("ISBN ID ="+isbn+" Book Name ="+book_name+" Author ="+author+" Category ="+category+" Status ="+status+" Time of most recent checkout"+ time_of_checkout.toString());
+	}
+	/**
+	 * Get most recent time book was entered into the library
+	 * @return
+	 */
+	public Date getTime_of_checkout() {
+		return time_of_checkout;
+	}
+	/**
+	 * Set time of checkout: do not use unless book is being re-borrowed
+	 * @param time_of_checkout
+	 */
+	public void setTime_of_checkout(Date time_of_checkout) {
+		this.time_of_checkout = time_of_checkout;
 	}
 	
 }
