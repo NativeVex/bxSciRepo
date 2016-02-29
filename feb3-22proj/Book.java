@@ -10,6 +10,11 @@ public class Book {
 	private Date time_of_checkout;
 	public Book(long isbn, String book_name, String author, String category, String status){
 		this.setTime_of_checkout(new Date());
+		this.author = author;
+		this.book_name = book_name;
+		this.isbn = isbn;
+		this.category = category;
+		this.status = status;
 	}
 	/**
 	 * Returns the Books.txt format of the book
