@@ -12,15 +12,25 @@ import java.util.Scanner;
 public class Main {
 	public static ArrayList<Book> lib = new ArrayList<Book>();
 	public static ArrayList<Borrower> users = new ArrayList<Borrower>(); 
+	public static Borrower currentUser;
+	public static Scanner scnr = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		populateUsers();
 		getUser();
 		populateLib(fetch());
-		//TODO make user interface here
+		currentUser.UI(); //TODO finish UI <-Nicky
+		
 		updateLib();
 
 	}
-	public static void populateLib(ArrayList<String> out){
+	
+	private static void populateUsers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void populateLib(ArrayList<String> out){
 		String book_name, author, category, status;
 		long isbn;
 		Date time_of_checkout = new Date();
@@ -38,32 +48,50 @@ public class Main {
 		}
 	}
 
-	public static void updateLib(){
+	private static void updateLib(){
 		//TODO write out arraylist to books.txt
 		//mad work
 		//warn user if could not save
 	}
+	
 	/**
 	 * Creates user specific instance
 	 */
 	public static void getUser(){
-		Scanner scnr = new Scanner(System.in);
 		System.out.println("Sign in: 'i' %nSign up: 'u'");
-		if(scnr.next().toLowerCase().equals("u")){
-			
-		}
+		String in = scnr.next().toLowerCase();
 		System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
-		String inputtedname ="";
-		if(scnr.next().toLowerCase().equals("s")){
-			System.out.println("enter your username: (case sensitive)");
-			inputtedname = scnr.next();
+		String type = scnr.next().toLowerCase();
+		System.out.println("enter your username: (case sensitive)");
+		String username =scnr.next();
+		if(in.equals("u")){
+			if(type.equals("s")){
+				Student temp = new Student(username);
+				users.add(temp);
+				currentUser = temp;
+				
+			}else if(type.equals("t")){
+				Teacher temp = new Teacher(username);
+				users.add(temp);
+				currentUser = temp;
+			}
+
+		}else if(in.equals("i")){
+			boolean a = false;
+			Borrower user = null;
 			for(Borrower temp: users){
-				if(temp.username.equals(inputtedname)){
-					//TODO
-				}else{
-					System.out.println("you have entered a username that does not exist, perhaps you're trying to make a new account?");
+				if(temp.username.equals(username)){
+					a = true;
+					temp = user;
+					break;
 				}
 			}
+			if(a){
+				currentUser = user;
+			}
+		}else{
+			System.out.printf("you have entered a username that does not exist, returning you to sign in/sign up screen");
+			getUser();
 		}
 	}
 

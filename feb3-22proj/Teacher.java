@@ -13,4 +13,11 @@ public class Teacher extends Borrower {
 		// TODO Auto-generated method stub
 		//cannot complete until borrower completed <-Nicky
 	}
+
+	@Override
+	void UI() {
+		System.out.println("Successfully logged in");
+		// TODO Auto-generated method stub
+		//remember to only use scanner scnr, saves system resources and makes it better to close
+	}
 }
