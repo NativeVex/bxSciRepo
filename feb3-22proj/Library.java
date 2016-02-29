@@ -21,6 +21,7 @@ public class Library {
 		launch(true);
 	}
 	
+	@Override
 	public String toString(){
 		return name;
 	}

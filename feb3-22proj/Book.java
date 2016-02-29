@@ -19,6 +19,7 @@ public class Book {
 	/**
 	 * Returns the Books.txt format of the book
 	 */
+	@Override
 	public String toString(){
 		return ("ISBN ID ="+isbn+" Book Name ="+book_name+" Author ="+author+" Category ="+category+" Status ="+status+" Time of most recent checkout"+ time_of_checkout.toString());
 	}

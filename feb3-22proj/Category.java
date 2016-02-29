@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //tried my best...By Justin :)
 //alright, so this code should be able to identify what the user is asking for
 import java.util.Scanner;
@@ -46,5 +45,5 @@ public class Category {
   }
   return fullList;
 }
->>>>>>> origin/feb3-22-project
+
   
