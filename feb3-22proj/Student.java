@@ -9,7 +9,7 @@ public class Student extends Borrower {
 
 	@Override
 	public void checkOut(Book in) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub <-Nicky&Justin
 		//cannot complete until borrower completed <-Nicky
 
 	}
@@ -17,7 +17,7 @@ public class Student extends Borrower {
 	@Override
 	void UI() {
 		System.out.println("Successfully logged in");
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub <-Nicky
 		//remember to only use scanner scnr, saves system resources and makes it better to close
 		
 	}

@@ -21,7 +21,18 @@ public abstract class Borrower{
 	 * @param book
 	 */
 	public void catalogueEnter(Book book){
-		Main.lib.add(book);
+		Library.lib.add(book);
+	}
+	
+	/**
+	 * returns a book the borrower has in their possession
+	 * @param book
+	 */
+	public void returnBook(Book book){
+		if(books_has.contains(book)){
+			catalogueEnter(book);
+			books_has.remove(book);
+		}
 	}
 	
 	/**
@@ -30,8 +41,8 @@ public abstract class Borrower{
 	 * @return
 	 */
 	public boolean availabilityCheck(String name){
-		for(int i = 0; i<Main.lib.size()-1;i++){
-			if(Main.lib.get(i).toString().indexOf(name)!=-1){
+		for(int i = 0; i<Library.lib.size()-1;i++){
+			if(Library.lib.get(i).toString().indexOf(name)!=-1){
 				return true;
 			}
 		}
