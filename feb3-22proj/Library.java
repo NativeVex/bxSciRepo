@@ -4,12 +4,18 @@
  */
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
 
 public class Library {
 	protected static ArrayList<Book> lib = new ArrayList<Book>();
@@ -42,7 +48,26 @@ public class Library {
 	}
 	
 	private static void updateUsers() {
-		// TODO Auto-generated method stub <-Artur
+		FileOutputStream fout = null;
+		try {
+			fout = new FileOutputStream(".");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		ObjectOutputStream oos = null;
+		try {
+			oos = new ObjectOutputStream(fout);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}   
+		for(Borrower temp: users){
+			try {
+				oos.writeObject(temp);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// TODO test this <-Artur
 		
 	}
 
