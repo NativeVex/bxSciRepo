@@ -2,6 +2,7 @@
  * @author Artur
  *
  */
+import java.util.Calendar;
 import java.util.Scanner();
 public class Student extends Borrower {
  public Student(String username){
@@ -23,7 +24,15 @@ public class Student extends Borrower {
    in.category = info[7];
    in.status = info[9]; 
    if(status=="avalible"){
-   
+     choices.add(bookChoice);
+     Calendar calStudent = Calendar.getInstance();
+     System.out.println("Check Out Date:"+ calStudent.getTime());
+     int Student = 14;
+     calStudent.add(Calendar.DATE,Student);
+     System.out.println("Student due date is :"+calStudent.getTime());
+     lib.remove(in);
+   }
+   else 
    //public ArrayList<String> books_has = new ArrayList<String>() use this to place the books that will be checked out
    //make the due dates from the book class
    //make sure the amount ckecked is legal for that respecive student
