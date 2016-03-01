@@ -3,7 +3,9 @@
  *
  */
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,6 +70,30 @@ public class Library {
 	}
 
 	private static void updateLib(){
+		File directory = new File("Books.txt");
+		try {
+			FileWriter write = new FileWriter(directory);
+			for(Book temp:lib){
+				write.write(temp.toString()); //TODO nicky's code
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("could not write to normal file location, writing to random file name to attempt to preserve data");
+			try {
+				directory = new File("Backup.txt");
+				FileWriter write = new FileWriter(directory);
+				for(Book temp:lib){
+					write.write(temp.toString()); //TODO nicky's code
+				}
+					//protected static ArrayList<Book> lib = new ArrayList<Book>();
+			} catch (IOException e1) {
+				for(Book temp:lib){
+					System.out.println(temp.toString());
+				}
+				System.out.println("data could not be saved, dumping contents into console");
+				e1.printStackTrace();
+			}
+		}
 		//TODO write out arraylist to books.txt <-Artur
 		//mad work
 		//warn user if could not save
