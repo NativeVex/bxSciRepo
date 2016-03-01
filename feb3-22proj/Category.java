@@ -9,7 +9,7 @@ public class Category {
     System.out.println("Please enter an ISBN number, bookname, catagory, or keyword for the book(s) that you would like:");
     String pokemon = bob.next().toLowerCase();//alright so we are going to make everythin lower case so that java dosent give us any errors. 
     String gundam = "Books.txt";
-    ArrayList<String> catalogue = Main.fetch(gundam);
+    ArrayList<String> catalogue = Library.fetch(gundam);
     for(int i=0; i < catalogue.size(); i++){
       String line = catalogue.get(i);
       String[] s1 = line.split(" ");

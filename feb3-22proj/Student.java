@@ -14,25 +14,28 @@ public class Student extends Borrower {
    ArrayList<String>choices = new ArrayList<String>;
    Category.getKey(); 
    Scanner temp = new Scanner(System.in);
-   System.out.print("Please enter the full line of information for the book that you want to check out:");
-   String bookChoice = temp.next().toLowerCase();
-   Book in = new Book();
-   String[] info = bookChoice.split(" ");
-   in.isbn = isbn.parseLong(info[1]); 
-   in.book_name = info[3];
-   in.author = info[5];
-   in.category = info[7];
-   in.status = info[9]; 
-   if(status=="avalible"){
-     choices.add(bookChoice);
-     Calendar calStudent = Calendar.getInstance();
-     System.out.println("Check Out Date:"+ calStudent.getTime());
-     int Student = 14;
-     calStudent.add(Calendar.DATE,Student);
-     System.out.println("Student due date is :"+calStudent.getTime());
-     lib.remove(in);
+   for(int i = 0; i<2; i++){
+     System.out.print("Please enter the full line of information for the book that you want to check out:");
+     String bookChoice = temp.next().toLowerCase();
+     Book in = new Book();
+     String[] info = bookChoice.split(" ");
+     in.isbn = isbn.parseLong(info[1]); 
+     in.book_name = info[3];
+     in.author = info[5];
+     in.category = info[7];
+     in.status = info[9]; 
+     if(status=="avalible"){
+       choices.add(bookChoice);
+       Calendar calStudent = Calendar.getInstance();
+       System.out.println("Check Out Date:"+ calStudent.getTime());
+       int Student = 14;
+       calStudent.add(Calendar.DATE,Student);
+       System.out.println("Student due date is :"+calStudent.getTime());
+       lib.remove(in);
+     }
+     else 
+       System.out.print("Unfortunatly, book is unavailable. Please enter another book choice.");
    }
-   else 
    //public ArrayList<String> books_has = new ArrayList<String>() use this to place the books that will be checked out
    //make the due dates from the book class
    //make sure the amount ckecked is legal for that respecive student
