@@ -125,6 +125,12 @@ public class Library {
 	 * Creates user specific instance
 	 */
 	private static void getUser(){
+		System.out.println("Are you a Borrower(b) Or Librarian(l)");
+		String a = scnr.next();
+		if (a=="l"){
+			//LIBIARIAN GOES HERE
+		}
+		else (a=="b"){
 		System.out.println("Sign in: 'i' %nSign up: 'u'");
 		String in = scnr.next().toLowerCase();
 		System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
@@ -160,6 +166,11 @@ public class Library {
 			System.out.printf("you have entered a username that does not exist, returning you to sign in/sign up screen");
 			getUser();
 		}
+		}
+		else {
+			System.out.println("Are you a Borrower(b) Or Librarian(l)");
+		}
+		
 	}
 
 	/**
