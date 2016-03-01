@@ -74,18 +74,18 @@ public class Library {
 		try {
 			FileWriter write = new FileWriter(directory);
 			for(Book temp:lib){
-				write.write(temp.toString()); //TODO nicky's code
+				write.write(temp.toString());
 			}
+			write.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("could not write to normal file location, writing to random file name to attempt to preserve data");
 			try {
 				directory = new File("Backup.txt");
 				FileWriter write = new FileWriter(directory);
 				for(Book temp:lib){
-					write.write(temp.toString()); //TODO nicky's code
+					write.write(temp.toString());
 				}
-					//protected static ArrayList<Book> lib = new ArrayList<Book>();
+				write.close();
 			} catch (IOException e1) {
 				for(Book temp:lib){
 					System.out.println(temp.toString());
@@ -94,9 +94,6 @@ public class Library {
 				e1.printStackTrace();
 			}
 		}
-		//TODO write out arraylist to books.txt <-Artur
-		//mad work
-		//warn user if could not save
 	}
 	
 	/**
