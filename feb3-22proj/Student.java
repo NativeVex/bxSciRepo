@@ -1,24 +1,36 @@
 /**
- * @author Artur
+* 
+*/
+
+/**
+* @author Artur
  *
- */
+*/
+import java.io.FileReader; 
+import java.io.BufferedReader;
+
 public class Student extends Borrower {
-	public Student(String username){
-		super(username);
-	}
+  void catalogueEnter(String catalogue) {
+  for 
+    
+    System.out.println(Book.txt)
+  }
 
-	@Override
-	public void checkOut(Book in) {
-		// TODO Auto-generated method stub <-Nicky&Justin
-		//cannot complete until borrower completed <-Nicky
 
-	}
+  void availabilityCheck() {
+// TODO Auto-generated method stub
+ 
+  }
 
-	@Override
-	void UI() {
-		System.out.println("Successfully logged in");
-		// TODO Auto-generated method stub <-Nicky
-		//remember to only use scanner scnr, saves system resources and makes it better to close
-		
-	}
+
+void checkOut() {
+ // TODO Auto-generated method stub
+ 
+}
+
+void returnBook(){
+  
+  
+}
+
 }

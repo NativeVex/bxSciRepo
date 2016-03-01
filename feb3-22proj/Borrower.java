@@ -1,65 +1,23 @@
-import java.util.ArrayList;
-
-/**
- * @author Artur
- *
- */
-
+import java.util.Scanner;
 public abstract class Borrower{
-
-	/**
-	 * The books the individual has in their possession
-	 */
-	public ArrayList<String> books_has = new ArrayList<String>();
-	public String username;
-	public Borrower(String username){
-		this.username = username;
-	}
-	
-	/**
-	 * Adds book to lib arraylist
-	 * @param book
-	 */
-	public void catalogueEnter(Book book){
-		Library.lib.add(book);
-	}
-	
-	/**
-	 * returns a book the borrower has in their possession
-	 * @param book
-	 */
-	public void returnBook(Book book){
-		if(books_has.contains(book)){
-			catalogueEnter(book);
-			books_has.remove(book);
-		}
-	}
-	
-	/**
-	 * Gets if book is available within Main.lib
-	 * @param name
-	 * @return
-	 */
-	public boolean availabilityCheck(String name){
-		for(int i = 0; i<Library.lib.size()-1;i++){
-			if(Library.lib.get(i).toString().indexOf(name)!=-1){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param in
-	 */
-	public void checkOut(Book in){
-		//in.setTime_of_checkout(new Date()); 
-		
-		//TODO
-		//check if limit is reached, & change status of book in out arraylist & add book to arraylist of stored <-Justin
-		//remember to override in student and teacher class adjusting for restrictions correctly <-Nicky
-	}
-	abstract void UI();
-
+  String x = "student";
+  String y = "teacher";
+  
+  Scanner bob = new Scanner(System.in);
+  System.out.println("Please enter if you are a teacher or a student");
+  
+  String sam = bob.nextString();
+  
+  if(sam.equals(x)){
+    Student pokemon = new Book();
+  }
+  else if(sam.equals(y)){
+    Teacher qiu = new Teacher();
+  }
+  else{
+    System.out.println("You entered an invalid statement. Please reenter your occupation");
+  }
+  abstract void catalogueEnter();
+  abstract void availabilityCheck();
+  abstract void checkOut();
 }
