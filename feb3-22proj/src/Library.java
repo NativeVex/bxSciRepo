@@ -130,7 +130,7 @@ public class Library {
 		if (a=="l"){
 			//LIBIARIAN GOES HERE
 		}
-		else (a=="b"){
+		else if(a=="b"){
 		System.out.println("Sign in: 'i' %nSign up: 'u'");
 		String in = scnr.next().toLowerCase();
 		System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
@@ -150,16 +150,16 @@ public class Library {
 			}
 
 		}else if(in.equals("i")){
-			boolean a = false;
+			boolean a1 = false;
 			Borrower user = null;
 			for(Borrower temp: users){
 				if(temp.username.equals(username)){
-					a = true;
+					a1 = true;
 					temp = user;
 					break;
 				}
 			}
-			if(a){
+			if(a1){
 				currentUser = user;
 			}
 		}else{
