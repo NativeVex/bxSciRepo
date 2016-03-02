@@ -3,43 +3,41 @@
  * @author Artur
  *
  */
+import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Teacher extends Borrower {
  public Teacher(String username){
   super(username);
  }
 
- @Override
- public void checkOut(Book in) {
-   import java.util.Calendar;
-import java.util.Scanner();
-public class Student extends Borrower {
- public Student(String username){
-  super(username);
- }
+
 
  @Override
  public void checkOut(Book in) {
-   ArrayList<String>choices = new ArrayList<String>;
+   ArrayList<String>choices = new ArrayList<String>();
    Category.getKey(); 
    Scanner temp = new Scanner(System.in);
    for(int i = 0; i<5; i++){
-     System.out.print("Please enter the full line of information for the book that you want to check out:");
-     String bookChoice = temp.next().toLowerCase();
-     Book in = new Book();
-     String[] info = bookChoice.split(" ");
-     in.isbn = isbn.parseLong(info[1]); 
-     in.book_name = info[3];
-     in.author = info[5];
-     in.category = info[7];
-     in.status = info[9]; 
-     if(status=="avalible"){
-       choices.add(bookChoice);
+     System.out.print("Please enter the ISBN#:");
+     String isbnNumber = temp.next().toLowerCase();
+     System.out.print("Please enter the book name:");
+     String name = temp.next().toLowerCase();
+     System.out.print("Please enter the author:");
+     String authorPerson = temp.next().toLowerCase();
+     System.out.print("Please enter the catogory:");
+     String catogoryType = temp.next().toLowerCase();
+     System.out.print("Please enter the status of the book:");
+     String statusOfBook = temp.next().toLowerCase();
+     Book in1 = new Book(isbnNumber, name, authorPerson, catogoryType, statusOfBook);
+     if(statusOfBook=="avalible"){
+       choices.add(name);
        Calendar calTeacher = Calendar.getInstance();
        System.out.println("Check Out Date:"+ calTeacher.getTime());
        int Teacher = 7;
-       calTeacher.add(Calendar.DATE,Student);
+       @SuppressWarnings("resource");
        System.out.println("Teacher due date is :"+calTeacher.getTime());
-       lib.remove(in);
+       Library.lib.remove(in);
      }
      else 
        System.out.print("Unfortunatly, book is unavailable. Please enter another book choice.");
@@ -50,8 +48,8 @@ public class Student extends Borrower {
    
   // TODO Auto-generated method stub <-Nicky&Justin
   //cannot complete until borrower completed <-Nicky
-
  }
+ 
    
    
    

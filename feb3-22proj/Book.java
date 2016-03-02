@@ -5,10 +5,10 @@ import java.util.Date;
  *
  */
 public class Book {
- private String book_name, author, category, status;
- private long isbn;
+ private String isbn, book_name, author, category, status;
  private Date time_of_checkout;
- public Book(long isbn, String book_name, String author, String category, String status){
+ 
+ public Book(String isbn, String book_name, String author, String category, String status){
   this.setTime_of_checkout(new Date());
   this.author = author;
   this.book_name = book_name;
@@ -20,7 +20,7 @@ public class Book {
   * Returns the Books.txt format of the book
   */
  public String toString(){
-  return ("ISBN#= "+isbn+" BookName="+book_name+" Author="+author+" Category ="+category+" Status="+status+" Time of most recent checkout"+ time_of_checkout.toString());
+  return ("ISBN#="+isbn+" BookName="+book_name+" Author="+author+" Category="+category+" Status="+status+" Time of most recent checkout="+ time_of_checkout.toString());
  }
  /**
   * Get most recent time book was entered into the library

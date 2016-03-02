@@ -3,7 +3,8 @@
  *
  */
 import java.util.Calendar;
-import java.util.Scanner();
+import java.util.ArrayList;
+import java.util.Scanner;
 public class Student extends Borrower {
  public Student(String username){
   super(username);
@@ -11,30 +12,33 @@ public class Student extends Borrower {
 
  @Override
  public void checkOut(Book in) {
-   ArrayList<String>choices = new ArrayList<String>;
+   ArrayList<String>choices = new ArrayList<String>();
    Category.getKey(); 
    Scanner temp = new Scanner(System.in);
    for(int i = 0; i<2; i++){
-     System.out.print("Please enter the full line of information for the book that you want to check out:");
-     String bookChoice = temp.next().toLowerCase();
-     Book in = new Book();
-     String[] info = bookChoice.split(" ");
-     in.isbn = isbn.parseLong(info[1]); 
-     in.book_name = info[3];
-     in.author = info[5];
-     in.category = info[7];
-     in.status = info[9]; 
-     if(status=="avalible"){
-       choices.add(bookChoice);
+     System.out.print("Please enter the ISBN#:");
+     String isbnNumber = temp.next().toLowerCase();
+     System.out.print("Please enter the book name:");
+     String name = temp.next().toLowerCase();
+     System.out.print("Please enter the author:");
+     String authorPerson = temp.next().toLowerCase();
+     System.out.print("Please enter the catogory:");
+     String catogoryType = temp.next().toLowerCase();
+     System.out.print("Please enter the status of the book:");
+     String statusOfBook = temp.next().toLowerCase();
+     Book in1 = new Book(isbnNumber, name, authorPerson, catogoryType, statusOfBook);
+     if(statusOfBook.equals("avalible")){
+       choices.add(name);
        Calendar calStudent = Calendar.getInstance();
        System.out.println("Check Out Date:"+ calStudent.getTime());
        int Student = 14;
        calStudent.add(Calendar.DATE,Student);
        System.out.println("Student due date is :"+calStudent.getTime());
-       lib.remove(in);
+       Library.lib.remove(in1);
      }
      else 
        System.out.print("Unfortunatly, book is unavailable. Please enter another book choice.");
+     temp.close();
    }
    //public ArrayList<String> books_has = new ArrayList<String>() use this to place the books that will be checked out
    //make the due dates from the book class

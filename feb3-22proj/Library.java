@@ -49,8 +49,8 @@ public class Library {
  }
 
  private static void populateLib(ArrayList<String> out){
-  String book_name, author, category, status;
-  long isbn;
+  String book_name, author, category, status, isbn;
+
   Date time_of_checkout = new Date();
   for(int i=0;i<out.size()-1;i++){
    String current = out.get(i);
