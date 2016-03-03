@@ -12,3 +12,5 @@
 *.prx
 *.tii
 *.tis
+*.java~
+*.drjava
