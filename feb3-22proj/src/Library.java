@@ -4,13 +4,11 @@
  */
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,35 +16,22 @@ import java.util.Scanner;
 
 
 public class Library {
-	protected static ArrayList<Book> lib = new ArrayList<Book>();
+	public static ArrayList<Book> lib = new ArrayList<Book>();
 	protected static ArrayList<Borrower> users = new ArrayList<Borrower>(); 
-	protected static Borrower currentUser;
-	protected static Scanner scnr = new Scanner(System.in);
+	private static Borrower currentUser;
+	public static Scanner scnr = new Scanner(System.in);
 	public String name;
 
 	public Library(String name) {
 		this.name = name;
 		launch(true);
 	}
-	
+
 	@Override
 	public String toString(){
 		return name;
 	}
-	
-	public static void launch(boolean firstStart){
-		if(firstStart == false){
-			populateUsers();
-			populateLib(fetch());
-		}
-		getUser();
-		currentUser.UI(); //TODO finish UI <-Nicky
-		
-		updateUsers();
-		updateLib();
-		System.exit(0);
-	}
-	
+
 	private static void updateUsers() {
 		FileOutputStream fout = null;
 		try {
@@ -68,26 +53,38 @@ public class Library {
 			}
 		}
 		// TODO test this <-Artur
-		
+
+	}
+
+	public static void launch(boolean firstStart){
+		if(firstStart == false){
+			populateUsers();
+			populateLib(fetch());
+		}
+		getUser();
+		currentUser.UI(); //TODO finish UI <-Nicky
+
+		updateUsers();
+		updateLib();
+		System.exit(0);
 	}
 
 	private static void populateUsers() {
 		// TODO Auto-generated method stub <-Artur
-		
+
 	}
 
 	private static void populateLib(ArrayList<String> out){
-		String book_name, author, category, status;
-		long isbn;
+		String book_name, author, category, status, isbn;
 		Date time_of_checkout = new Date();
 		for(int i=0;i<out.size()-1;i++){
 			String current = out.get(i);
-			isbn = Integer.parseInt(current.substring(current.indexOf("ISBN ID ="), current.indexOf(" Book Name =")));
-			book_name =current.substring(current.indexOf(" Book Name ="),current.indexOf(" Author ="));
-			author =current.substring(current.indexOf(" Author ="),current.indexOf(" Category ="));
-			category =current.substring(current.indexOf(" Category ="),current.indexOf(" Status ="));
-			status =current.substring(current.indexOf(" Status ="),current.indexOf(" Time of most recent checkout"));
-			time_of_checkout.setTime(Long.parseLong(current.substring(current.indexOf(" Time of most recent checkout"),current.length())));
+			isbn = current.substring(current.indexOf("ISBNID="), current.indexOf(" BookName="));
+			book_name =current.substring(current.indexOf(" BookName="),current.indexOf(" Author="));
+			author =current.substring(current.indexOf(" Author="),current.indexOf(" Category="));
+			category =current.substring(current.indexOf(" Category="),current.indexOf(" Status="));
+			status =current.substring(current.indexOf(" Status="),current.indexOf(" TimeOfMostRecentCheckout"));
+			time_of_checkout.setTime(Long.parseLong(current.substring(current.indexOf(" TimeOfMostRecentCheckout"),current.length())));
 			Book temp = new Book(isbn,book_name,author,category,status);
 			temp.setTime_of_checkout(time_of_checkout);
 			lib.add(temp);
@@ -120,7 +117,7 @@ public class Library {
 			}
 		}
 	}
-	
+
 	/**
 	 * Creates user specific instance
 	 */
@@ -131,48 +128,47 @@ public class Library {
 			//LIBIARIAN GOES HERE
 		}
 		else if(a=="b"){
-		System.out.println("Sign in: 'i' %nSign up: 'u'");
-		String in = scnr.next().toLowerCase();
-		System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
-		String type = scnr.next().toLowerCase();
-		System.out.println("enter your username: (case sensitive)");
-		String username =scnr.next();
-		if(in.equals("u")){
-			if(type.equals("s")){
-				Student temp = new Student(username);
-				users.add(temp);
-				currentUser = temp;
-				
-			}else if(type.equals("t")){
-				Teacher temp = new Teacher(username);
-				users.add(temp);
-				currentUser = temp;
-			}
+			System.out.println("Sign in: 'i' %nSign up: 'u'");
+			String in = scnr.next().toLowerCase();
+			System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
+			String type = scnr.next().toLowerCase();
+			System.out.println("enter your username: (case sensitive)");
+			String username =scnr.next();
+			if(in.equals("u")){
+				if(type.equals("s")){
+					Student temp = new Student(username);
+					users.add(temp);
+					currentUser = temp;
 
-		}else if(in.equals("i")){
-			boolean a1 = false;
-			Borrower user = null;
-			for(Borrower temp: users){
-				if(temp.username.equals(username)){
-					a1 = true;
-					temp = user;
-					break;
+				}else if(type.equals("t")){
+					Teacher temp = new Teacher(username);
+					users.add(temp);
+					currentUser = temp;
 				}
+
+			}else if(in.equals("i")){
+				boolean a1 = false;
+				Borrower user = null;
+				for(Borrower temp: users){
+					if(temp.username.equals(username)){
+						a1 = true;
+						temp = user;
+						break;
+					}
+				}
+				if(a1){
+					currentUser = user;
+				}
+			}else{
+				System.out.printf("you have entered a username that does not exist, returning you to sign in/sign up screen");
+				getUser();
 			}
-			if(a1){
-				currentUser = user;
-			}
-		}else{
-			System.out.printf("you have entered a username that does not exist, returning you to sign in/sign up screen");
-			getUser();
-		}
 		}
 		else {
 			System.out.println("Are you a Borrower(b) Or Librarian(l)");
 		}
-		
-	}
 
+	}
 	/**
 	 * fills out with input from Books.txt
 	 */
