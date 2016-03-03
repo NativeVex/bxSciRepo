@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Category {
   public static ArrayList<String> getKey(){
     ArrayList<String>fullList= new ArrayList<String>();
-    @SuppressWarnings("resource");
-    Scanner bob = new Scanner(System.in);
+    @SuppressWarnings("resource")
+	Scanner bob = new Scanner(System.in);
     System.out.println("Please enter an ISBN number, bookname, catagory, or keyword for the book(s) that you would like:");
     String pokemon = bob.next().toLowerCase();//alright so we are going to make everythin lower case so that java dosent give us any errors. 
    // String gundam = "Books.txt";
