@@ -7,9 +7,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner temp = new Scanner(System.in);
 		System.out.println("would you like to create a new library or use an existing one?%n New: 'n', Existing, 'e'");
-		if(temp.next().toLowerCase().equals("n")){
+		if(temp.next().equalsIgnoreCase("n")){
 			list.add(new Library(temp.next()));
-		}else if(temp.next().toLowerCase().equals("e")){
+		}else if(temp.next().equalsIgnoreCase("e")){
 			System.out.println(list +"%n%nplease choose a library");
 			String name = temp.next();
 			boolean successful_launch = false;
@@ -19,13 +19,13 @@ public class Main {
 					Library.launch(false);
 				}
 			}
-			if(successful_launch ==false){
-				System.out.println("no such library found. Quitting.");
-				System.exit(2);
+			if(!successful_launch){
+				System.out.println("no such library found. Restoring to main menu.");
+				main(args);
 			}
 		}else{
-			System.out.println("input not recognized. Quitting.");
-			System.exit(1);
+			System.out.println("input not recognized. Restoring to main menu.");
+			main(args); //not sure if I can do this, but hell, why not
 		}
 		temp.close();
 	}

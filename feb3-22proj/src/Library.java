@@ -127,7 +127,7 @@ public class Library {
 		if (a=="l"){
 			//LIBIARIAN GOES HERE
 		}
-		else if(a=="b"){
+		else if(a.equals("b")){
 			System.out.println("Sign in: 'i' %nSign up: 'u'");
 			String in = scnr.next().toLowerCase();
 			System.out.printf("Are you a teacher or a student? %n Student:'S', Teacher'T'");
@@ -181,7 +181,7 @@ public class Library {
 			boolean b = true;
 			while(b){
 				String temp = bufferedReader.readLine(); //saves current iteration into temp var
-				if(temp.equals(null)){ //when reading empty line, temp var = null
+				if(temp==null){ //when reading empty line, temp var = null
 					b = false; //prevent more looping
 					break; //do not continue loop
 				}

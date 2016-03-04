@@ -50,7 +50,7 @@ public class Student extends Borrower {
 	}
 
 	@Override
-	void UI() {
+	public void UI() {
 		System.out.println("Successfully logged in");
 		/*go to Catogory.getKey for book*/
 		// TODO Auto-generated method stub <-Nicky

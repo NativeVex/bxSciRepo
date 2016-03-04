@@ -60,6 +60,6 @@ public abstract class Borrower{
 		//check if limit is reached, & change status of book in out arraylist & add book to arraylist of stored <-Justin
 		//remember to override in student and teacher class adjusting for restrictions correctly <-Nicky
 	}
-	abstract void UI();
+	public abstract void UI();
 
 }

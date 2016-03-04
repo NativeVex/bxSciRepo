@@ -5,12 +5,12 @@ import java.util.Date;
  *
  */
 public class Book {
- String isbn;
- String book_name;
- String author;
- String category;
- String status;
- Date time_of_checkout;
+public String isbn;
+public String book_name;
+public String author;
+public String category;
+public String status;
+private Date time_of_checkout;
  
  public Book(String isbn, String book_name, String author, String category, String status){
   this.setTime_of_checkout(new Date());
